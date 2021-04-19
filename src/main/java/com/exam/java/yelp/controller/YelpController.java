@@ -25,6 +25,7 @@ public class YelpController {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(yelpService.getReviews(restaurantName));
 		} catch (Exception e) {
+			LOG.error("Error in getting reviews", e);
 			e.printStackTrace();
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(null);
