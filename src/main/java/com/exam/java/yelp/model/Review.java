@@ -15,6 +15,8 @@ import lombok.Setter;
 @Builder(toBuilder = true)
 public class Review implements Serializable {
 	
+	private static final long serialVersionUID = 1286349952167010104L;
+
 	private String id; 
 	
 	private String url;
@@ -26,7 +28,5 @@ public class Review implements Serializable {
 	private String timeCreated;
 	
 	private User user;
-	
-	private Vision visionAPI;
 
 }

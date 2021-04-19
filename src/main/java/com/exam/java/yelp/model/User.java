@@ -20,5 +20,7 @@ public class User implements Serializable {
 	private String imageUrl;
 	
 	private String name;
+	
+	private Vision visionAPI;
 
 }

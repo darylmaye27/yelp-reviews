@@ -61,9 +61,9 @@ public class YelpServiceImpl implements YelpService {
 							.exposed(annotation.getUnderExposedLikelihood().name())
 							.blurred(annotation.getBlurredLikelihood().name())
 							.headwear(annotation.getHeadwearLikelihood().name()).build();
-					review.setVisionAPI(vision);
+					review.getUser().setVisionAPI(vision);
 				} else {
-					review.setVisionAPI(Vision.builder().build());
+					review.getUser().setVisionAPI(Vision.builder().build());
 				}
 			}
 			
@@ -71,7 +71,6 @@ public class YelpServiceImpl implements YelpService {
 		} else {
 			return YelpResult.builder().build();
 		}
-		//restTemplate.exchange("https://api.yelp.com/v3/businesses/WavvLdfdP6g8aZTtbBQHTw", HttpMethod.GET, getHeaders(), String.class);
 	}
 
 	private ResponseEntity<ReviewResult> getYelpReviews(String id) {
@@ -82,7 +81,6 @@ public class YelpServiceImpl implements YelpService {
 	}
 	
 	private FaceAnnotation annotateImage(String imageUrl) {
-		LOG.info(imageUrl);
 		AnnotateImageResponse response =
 			    this.cloudVisionTemplate.analyzeImage(
 			        this.resourceLoader.getResource(imageUrl), Type.FACE_DETECTION);
